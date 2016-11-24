@@ -140,14 +140,21 @@ ReactDOM.render(
 )
 ```
 好了，让我们看看这个过程都发生了什么？
-首先我们调用ReactDOM.render()通过<Welcome name='Ben' />元素。当React发现Welcome是组件时变讲{name:'Ben'}对象看做道具，Welcome的组件同时返回了一个<h1>Hello, Ben</h1>的元素结果，React DOM更新了页面。
+首先我们调用ReactDOM.render()通过<Welcome name='Ben' />元素。当React发现Welcome是组件时变讲{name:'Ben'}对象看做道具，Welcome的组件同时返回了一个
+```html
+<h1>Hello, Ben</h1>
+```
+的元素结果，React DOM更新了页面。
 需要注意的是，自定义组件使用了首字母大写方式，而小写的则代表了DOM。
 看这段代码~
 ```Javascript
 function Comment(props) {
   return (
     <div className="UserInfo">
-
+    <img className="Avatar"
+      src={props.user.avatarUrl}
+      alt={props.user.name}
+    />
       />
     </div>
   );
@@ -200,3 +207,4 @@ ReactDOM.render(
   document.getElementById('app')
 )
 ```
+##6)
