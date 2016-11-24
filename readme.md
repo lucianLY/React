@@ -151,10 +151,9 @@ ReactDOM.render(
 function Comment(props) {
   return (
     <div className="UserInfo">
-    <img className="Avatar"
-      src={props.user.avatarUrl}
-      alt={props.user.name}
-    />
+      <img className="Avatar"
+        src={props.user.avatarUrl}
+        alt={props.user.name}
       />
     </div>
   );
