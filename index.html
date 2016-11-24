@@ -10,11 +10,18 @@
   <body>
     <div id="app"></div>
     <script type="text/jsx">
-    let html = (
-      <h1>Hello React</h1>
+    function formatName (user) {
+      return user.fristName + ' ' + user.lastName
+    }
+    let user = {
+      fristName : 'Herper',
+      lastName : 'Perez'
+    }
+    let element = (
+      <h1>Hello {formatName(user)}</h1>
     )
     ReactDOM.render(
-      html,
+      element,
       document.getElementById('app')
     )
     </script>
