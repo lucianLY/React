@@ -10,6 +10,51 @@
   <body>
     <div id="app"></div>
     <script type="text/jsx">
+    class Clock extends React.Component {
+      constructor (props) {
+        super(props)
+        this.state = {date : new Date()}
+      }
+      componentDidMount() {
+        this.timeID = setInterval(
+          () => this.tick(),
+          1000
+        );
+      }
+
+      componentWillUnmount() {
+        clearInterval(this.timeID);
+      }
+
+      tick() {
+        this.setState({
+          date: new Date()
+        });
+      }
+      render () {
+            return (
+              <div>
+                <h1>Local Time</h1>
+                <h2>{this.state.date.toLocaleTimeString()}</h2>
+              </div>
+            )
+      }
+    }
+
+    ReactDOM.render (
+      <Clock />,
+      document.getElementById('app')
+    )
+    // function Clock (props) {
+    //   return (
+    //     <div>
+    //       <h1>Local Time</h1>
+    //       <h2>
+    //         {props.date.toLocaleTimeString()}
+    //       </h2>
+    //     </div>
+    //   )
+    // }
 
     // function tick () {
     //   let element = (
@@ -29,32 +74,32 @@
     //   return <h1>Hello, {props.name} </h1>
     // }
     //
-    function Comment(props) {
-      return (
-        <div className="UserInfo">
-          <Avatar user={props.author}/>
-        </div>
-      );
-    }
-    function Avatar (props) {
-      return (
-        <img className="Avatar"
-          src={props.user.avatarUrl}
-          alt={props.user.name}
-        />
-      )
-    }
-    let comment = {
-      author: {
-        name: 'Hello Kitty',
-        avatarUrl: 'http://placekitten.com/g/64/64'
-      }
-    };
-    let element = <Comment author={comment.author}/>
-    ReactDOM.render(
-      element,
-      document.getElementById('app')
-    )
+    // function Comment(props) {
+    //   return (
+    //     <div className="UserInfo">
+    //       <Avatar user={props.author}/>
+    //     </div>
+    //   );
+    // }
+    // function Avatar (props) {
+    //   return (
+    //     <img className="Avatar"
+    //       src={props.user.avatarUrl}
+    //       alt={props.user.name}
+    //     />
+    //   )
+    // }
+    // let comment = {
+    //   author: {
+    //     name: 'Hello Kitty',
+    //     avatarUrl: 'http://placekitten.com/g/64/64'
+    //   }
+    // };
+    // let element = <Comment author={comment.author}/>
+    // ReactDOM.render(
+    //   element,
+    //   document.getElementById('app')
+    // )
     // class Welcome extend React.Component {
     //   render () {
     //     return <h1>Hello, {this.props.name}</h1>
