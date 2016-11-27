@@ -25,7 +25,7 @@ ReactDOM.render(
 
 ##2) 初始 React
 React是一个Javascript库，假设你了解基本的Javascript语法，但是并不是很理解，我建议可以先看一下Javascript的知识再继续学习React。我们也需要用到一些ES6的语法知识。
-Ok，我们从一个最简单的例子开始学习，React。首先我们需要引用react.js、react-dom.js和babel.js三个js文件
+Ok，我们从一个最简单的例子开始学习，React。首先我们需要引用react.js、react-dom.js和babel.js三个js文件。注意：凡是使用JSX的语法都需要添加script type="text/jsx"，因为React独有的JSX语法跟javascript不兼容。react.js是React核心库，react-dom.js提供了与DOM有关的功能，baber.js作用是讲JSX转化成javascript的语法。
 
 ```html
 <div id="app"></div>
@@ -44,6 +44,7 @@ var element = <h1>Hello React</h1>
 ```
 这被称之为JSX，JSX是Javascript的语法扩展，我们推荐使用它来描述React里的UI结构。这里提示一下JSX是模板语言，同时也具备javascript的全部功能。
 我们可以将Javascript表达式嵌入在JSX里通过大括号的形式书写。
+基本语法规则：遇到(<)开头就使用html规则解释；遇到({)卡特就用javascript规则解释。
 ```Javascript
 function formatName (user) {
   return user.fristName + ' ' + user.lastName
@@ -280,7 +281,7 @@ function tick () {
 }
 setInterval(tick,1000)
 ```
-OK，我们的任务完成了，但是发现时间是静止的。这个如何解决呢？这时候我们需要添加一个生命周期的方法来解决了。一个应用中包含了多个组件，重要的是通过销毁哪些所占用的资源组件。我们准备给Clock做一个定时器当首次渲染DOM的时候，这个过程在React称之为【mounting】。同时也需要一个方法当DOM被产生时我们将移除它。这个过程我们称之为卸载【unmounting】。这些方法被称作生命周期钩子 【lifecycle hooks】
+OK，我们的任务完成了，但是发现时间是静止的。这个如何解决呢？这时候我们需要添加一个生命周期的方法来解决了。对于包含大量组件的应用，组件销毁时清理相应的资源是非常重要的步骤。。我们准备给Clock做一个定时器当首次渲染DOM的时候，这个过程在React称之为【mounting】。同时也需要一个方法当DOM被产生时我们将移除它。这个过程我们称之为卸载【unmounting】。这些方法被称作生命周期钩子 【lifecycle hooks】
 ```Javascript
 class Clock extends React.Component {
   constructor (props) {
@@ -370,3 +371,4 @@ ReactDOM.render (
 3、当Clock输出到DOM时，React调用了componentDidMount()生命周期钩子，在Clock组件里会每秒询问浏览器回调tick方法。
 4、每次浏览器去回调tick方法时Clock组件都会去执行setState更新当前时间对象。React发现状态改变了，会再一次调用render方法。这时候,在render()里的this.date.date是不一样的，React渲染输出更新时间。
 5、如果CLock组件移除了DOM，React将回调componentWillUnmount()生命周期钩子，这个时间则停止。
+正确的理解setState
