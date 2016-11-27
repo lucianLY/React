@@ -36,7 +36,7 @@ ReactDOM.render(
 )
 </script>
 ```
-刷新我们的页面，这样我们在页面上渲染出了‘Hello React’。
+刷新我们的页面，这样我们在页面上渲染出了‘Hello React’。 (代码部分lesson1)
 ##3) 介绍JSX
 这段代码语法既不是字符串也不是html
 ```Javascript
@@ -81,6 +81,7 @@ let element = <div tabIndex = '1' ></div>
 ```Javascript
 let element = <img src={user.avatarUrl} />
 ```
+代码部分 lesson2
 ##4) 呈现元素
 元素是React里最小的单元，元素描述的内容将会呈现在页面上。它不像是浏览器的DOM元素，React元素是普通对象而且很容易创造。
 首先让我们看一下如何在DOM中渲染React元素。
@@ -112,6 +113,7 @@ function tick () {
 
 setInterval(tick, 1000)
 ```
+代码部分 lesson 3
 ##5) 组件和道具 Components and Props
 组件让我们拆分为独立的UI，具有可重复性并且相互独立。从定义上来看，组件更像是Javascript的方法，他们接受任何的道具并且返回呈现在页面上的React元素。
 最简单的方法是定义一个Javascript函数
