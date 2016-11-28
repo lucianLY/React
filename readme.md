@@ -437,8 +437,6 @@ class Toggle extends React.Component {
 
   handleClick = () => {
     let isToggleOn = !this.state.isToggleOn
-
-    console.log(isToggleOn)
     this.setState({isToggleOn})
   }
 
@@ -457,3 +455,69 @@ ReactDOM.render(
 )
 ```
 代码参见 lesson 6
+##7) 条件渲染 Conditional Rendering
+React中可以使用不同的组件，提供了条件渲染的行为，可以使用javascript中的if来完成。
+改造一下上节课的代码。
+```javascript
+class Login extends React.Component {
+  state = {
+    isToggle : false
+  }
+  userLogin =() => {
+    let isToggle = !this.state.isToggle
+    this.setState({isToggle})
+  }
+  render () {
+    return (
+      <div>
+        <Greeting isToggle={this.state.isToggle}/>
+        <button onClick = {this.userLogin}>登录</button>
+      </div>
+    )
+  }
+}
+function Greeting (props) {
+  if( props.isToggle ){
+    return <h1>Welcome Back!</h1>
+  }else{
+    return <h1>Please Sing up.</h1>
+  }
+}
+ReactDOM.render(
+  <Login />,
+  document.getElementById('app')
+)
+```
+##7) 列表渲染
+在javascript中我们可以使用map()方法进行遍历。同样，在JSX中也会有一个map方法。简单的看一下代码：
+```javascript
+let items = [1,2,3,4,5,6,7,8,9]
+let listItems = items.map((number) =>
+  <li>{number}</li>
+)
+ReactDOM.render(
+  <ul>{listItems}</ul>,
+  document.getElementById('app')
+)
+```
+通常我们会把上边的代码放到一个组件里去完成。我们可以写一个list的组件来完成：
+```javascript
+let items = [1,2,3,4,5,6,7,8,9]
+function List (props) {
+  let items = props.items
+  let listItems = items.map((number,index) =>
+    <li key = {index}>
+      {index}--{number}
+    </li>
+  )
+  return (
+    <li>{listItems}</li>
+  )
+}
+ReactDOM.render(
+  <List items = {items}/>,
+  document.getElementById('app')
+)
+```
+代码部分 lesson 8
+#表单

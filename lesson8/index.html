@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Lesson 8 React 遍历渲染</title>
+    <script src="../js/react.min.js"></script>
+    <script src="../js/react-dom.min.js"></script>
+    <script src="../js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/jsx">
+      let items = [1,2,3,4,5,6,7,8,9]
+      function List (props) {
+        let items = props.items
+        let listItems = items.map((number,index) =>
+          <li key = {index}>
+            {index}--{number}
+          </li>
+        )
+        return (
+          <li>{listItems}</li>
+        )
+      }
+      ReactDOM.render(
+        <List items = {items}/>,
+        document.getElementById('app')
+      )
+    </script>
+  </body>
+</html>
