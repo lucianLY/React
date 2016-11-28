@@ -24,9 +24,9 @@ ReactDOM.render(
 ```
 
 ##2) 初始 React
-React是一个Javascript库，假设你了解基本的Javascript语法，但是并不是很理解，我建议可以先看一下Javascript的知识再继续学习React。我们也需要用到一些ES6的语法知识。
-Ok，我们从一个最简单的例子开始学习，React。首先我们需要引用react.js、react-dom.js和babel.js三个js文件。注意：凡是使用JSX的语法都需要添加script type="text/jsx"，因为React独有的JSX语法跟javascript不兼容。react.js是React核心库，react-dom.js提供了与DOM有关的功能，baber.js作用是讲JSX转化成javascript的语法。
-
+React是一个Javascript库，如果你了解基本的Javascript语法，但是并不是很理解，我建议可以先看一下Javascript的知识再继续学习React。学习React时也需要用到一些ES6的语法知识。
+Ok，我们从一个最简单的例子开始学习，React。首先我们需要引用react.js、react-dom.js和babel.js三个js文件。react.js是React核心库，react-dom.js提供了与DOM有关的功能，baber.js作用是讲JSX转化成javascript的语法。
+注意：凡是使用JSX的语法都需要添加script type="text/jsx"，因为React独有的JSX语法跟javascript不兼容。
 ```html
 <div id="app"></div>
 <script type="text/jsx">
@@ -373,4 +373,17 @@ ReactDOM.render (
 3、当Clock输出到DOM时，React调用了componentDidMount()生命周期钩子，在Clock组件里会每秒询问浏览器回调tick方法。
 4、每次浏览器去回调tick方法时Clock组件都会去执行setState更新当前时间对象。React发现状态改变了，会再一次调用render方法。这时候,在render()里的this.date.date是不一样的，React渲染输出更新时间。
 5、如果CLock组件移除了DOM，React将回调componentWillUnmount()生命周期钩子，这个时间则停止。
-正确的理解setState
+组件的声明周期分成三个状态：
+```Javascript
+  Mounting : 已插入DOM
+  Updating : 正在被渲染
+  Unmounting : 已移除真是DOM
+```
+React为每个状态都提供两个处理函数 will 函数在进入状态之前调用，did 函数进入状态之后调用。
+```Javascript
+  componentWillMount()
+  componentDidMount()
+  conponentWillUpdate(object nextProps, object prevState)
+  conponentdidlUpdate(object nextProps, object prevState)
+  componentWillUnmount()
+```
