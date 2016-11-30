@@ -520,4 +520,6 @@ ReactDOM.render(
 )
 ```
 代码部分 lesson 8
-#表单
+##8) 表单
+html的表单和React表单还是略有不同。在html里像<input>,<textarea>,<select>通常保持着自己的状态基于用户输入而更新。在React中，可变的状态是通常是保存在组件中。仅依靠setState()完成。
+##9) 

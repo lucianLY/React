@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Lesson 9 React 表单</title>
+    <script src="../js/react.min.js"></script>
+    <script src="../js/react-dom.min.js"></script>
+    <script src="../js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/jsx">
+    class Login extends React.Component {
+      state = {
+        cites : ['上海','北京','苏州'],
+        name : 'username',
+        btnTxt : '提交'
+      }
+      updateForm = (event) => {
+        let f = event.preventDefault()
+        console.log(event)
+      }
+      render () {
+        return (
+          <form onSubmit={this.updateForm}>
+            <div>
+              Username:
+              <input type='text' value={this.state.name} />
+            </div>
+            <div>
+              <Cityselect cites = {this.state.cites} />
+            </div>
+            <button type='submit'>{this.state.btnTxt}</button>
+          </form>
+        )
+      }
+    }
+    function Cityselect (props) {
+      let cites = props.cites
+      let CityOption = cites.map((number) =>
+        <option>{number}</option>
+      )
+      return (
+        <select>{CityOption}</select>
+      )
+    }
+    ReactDOM.render(
+      <Login />,
+      document.getElementById('app')
+    )
+
+    </script>
+  </body>
+</html>
