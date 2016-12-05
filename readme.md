@@ -606,3 +606,9 @@ var config = {
 babel-loader的作用: 可以把ES6的代码编译成ES5代码来使用
 babel-preset-es2015的作用: 字段转换的规则
 babel-preset-react的作用: 解析转换reactjs语法
+关于命令的简写
+介绍三个非常有用的-global,-save, -save-dev【注意区分大小写】
+-global简写-g
+-save简写-S
+-save-dev简写-D
+npm init自动化生成创建package.json文件。
