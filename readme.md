@@ -531,7 +531,7 @@ output
 Loaders
 目的是让webpack关注所有的资源而不是浏览器。webpack会处理每一个文件然而它只懂javascript
 Plugins
-##) React.js环境下使用Npm， Babel和Webpack
+##案例一  React.js环境下使用Npm， Babel和Webpack
 首先我们开启这个demo。首先新建项目文件夹tea，并在其中安装react和react-dom。
 ```javascript
   mkdir tea
