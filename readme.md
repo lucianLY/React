@@ -522,4 +522,43 @@ ReactDOM.render(
 代码部分 lesson 8
 ##8) 表单
 html的表单和React表单还是略有不同。在html里像<input>,<textarea>,<select>通常保持着自己的状态基于用户输入而更新。在React中，可变的状态是通常是保存在组件中。仅依靠setState()完成。
-##9) 
+##9) webpack 概念
+webpack是最新javascript应用里的模块打包工具，它是可配置的。然而，开始项目之前有四个核心概念需要我们理解。
+Entry
+webpack简历了一套项目依赖关系图，最开始的起点被称作point。它讲告诉webpack依赖关系从哪里开始要开始打包。你可以想象程序的起点是上下文或者第一个启动的程序。
+output
+你将资源捆绑在一起，仍然需要告诉webpack在哪里构建。
+Loaders
+目的是让webpack关注所有的资源而不是浏览器。webpack会处理每一个文件然而它只懂javascript
+Plugins
+##) React.js环境下使用Npm， Babel和Webpack
+首先我们开启这个demo设置。首先新建项目文件夹tea，然后在里边新建bundle、css、js、images等子文件夹，并且初始化一个package.json的文件(备注：这个设置可以全部next)
+```javascript
+  mkdir tea
+  cd tea
+  npm init
+```
+这些都完成之后，我们开始安装webpack。安装完成之后在项目根目录下设置一个webpack.config.js文件。
+```javascript
+  npm i webpack -S
+```
+更新我们的webpack.config.js文件
+```javascript
+var webpack = require('webpack')
+var path = require('path')
+
+var BUILD_DIR = path.resolve(__dirname, 'bundle')
+var APP_DIR = path.resolve(__dirname, 'js')
+
+var config = {
+  entry: APP_DIR + '/index.jsx',
+  output: {
+    path: BUILD_DIR,
+    filename: 'bundle.js'
+  }
+}
+```
+注意：我们这里只是简单的配置了一下webpack里的入口和出口。为了验证我们的配置是否正确我们先在js文件夹下建立一个index.jsx的文件。并在里边写一行代码
+```Javascript
+  console.log(123)
+```
