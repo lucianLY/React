@@ -1,5 +1,6 @@
 #React 快速入门
 ##1) 安装
+[React安装](https://github.com/lucianLY/React/tree/master/lesson1)
 我们推荐使用npm来进行管理前端依赖库
 ```Javascript
 npm install --save react react-dom
