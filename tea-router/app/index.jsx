@@ -2,14 +2,15 @@ import React from 'react'
 import {render} from 'react-dom'
 import {Router, Route, hashHistory} from 'react-router'
 import Header from './components/header.jsx'
-import CoffeeCollege from './components/coffee-college.jsx'
+import College from './components/coffee-college.jsx'
 import CoffeeCircle from './components/coffee-circle.jsx'
 
+let routes = <Router path='/' component={Header}>
+  <Route path='/college' component={College} />
+  <Route path='/circle' component={CoffeeCircle} />
+</Router>
+
 render((
-  <Router history={hashHistory}>
-    <Route path='/' component={Header} />
-    <Route path='/college' commponent={CoffeeCollege} />
-    <Route path='/circle' commponent={CoffeeCircle} />
-  </Router>
+  <Router routes={routes} history={hashHistory}></Router>
   ), document.getElementById('app')
 )
