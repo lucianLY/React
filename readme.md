@@ -1,4 +1,4 @@
-#React 快速入门
+#React 教程
 ##1) 快速入门
 [React安装](https://github.com/lucianLY/React/tree/master/lesson1)<br/>
 [JSX介绍](https://github.com/lucianLY/React/tree/master/lesson2)<br/>
