@@ -9,4 +9,5 @@
 [React条件渲染](https://github.com/lucianLY/React/tree/master/lesson7)<br/>
 [React列表渲染](https://github.com/lucianLY/React/tree/master/lesson8)<br/>
 ##2) 进阶
-[单页面应用 React.js环境下使用Npm, Babel和Webpack](https://github.com/lucianLY/React/tree/master/tea))
+[单页面应用 React.js环境下使用Npm, Babel和Webpack](https://github.com/lucianLY/React/tree/master/tea)
+[React-router的介绍](https://github.com/lucianLY/React/tree/master/tea-router)
