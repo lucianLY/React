@@ -3,8 +3,8 @@
 ```Javascript
 var element = <h1>Hello React</h1>
 ```
-这被称之为JSX，JSX是Javascript的语法扩展，我们推荐使用它来描述React里的UI结构。这里提示一下JSX是模板语言，同时也具备javascript的全部功能。
-我们可以将Javascript表达式嵌入在JSX里通过大括号的形式书写。
+这被称之为JSX，JSX是Javascript的语法扩展，我们推荐使用它来描述React里的UI结构。这里提示一下JSX是模板语言，同时也具备javascript的全部功能。<br>
+我们可以将Javascript表达式嵌入在JSX里通过大括号的形式书写。<br>
 基本语法规则：遇到(<)开头就使用html规则解释；遇到({)卡特就用javascript规则解释。
 ```Javascript
 function formatName (user) {

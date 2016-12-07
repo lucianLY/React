@@ -1,4 +1,4 @@
-##安装、初始React
+##初始React
 我们推荐使用 Npm 来进行管理前端依赖库
 ```Javascript
 npm install --save react react-dom -S

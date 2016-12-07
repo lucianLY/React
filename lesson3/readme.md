@@ -11,7 +11,6 @@ ReactDOM.render(
   document.getElementById('app')
 )
 ```
-更新元素
 React是不可变的，我们只能创建一次，我们不能改变其中的子类和属性，每一个元素都像电影里的一帧。唯一的办法就是更新元素。
 ```Javascript
 function tick () {
