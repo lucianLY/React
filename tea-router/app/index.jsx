@@ -1,6 +1,6 @@
 import React from 'react'
 import {render} from 'react-dom'
-import {Router, Route,IndexRoute, hashHistory} from 'react-router'
+import {Router, Route,IndexRoute, browserHistory} from 'react-router'
 import Header from './components/header.jsx'
 import College from './components/coffee-college.jsx'
 import Circle from './components/coffee-circle.jsx'
@@ -14,7 +14,7 @@ let routes = <Router path='/' component={Header}>
 </Router>
 
 render((
-  <Router routes={routes} history={hashHistory}>
+  <Router routes={routes} history={browserHistory}>
     <IndexRoute component={Home}/>
   </Router>
   ), document.getElementById('app')

@@ -29,6 +29,8 @@ a{
   text-align: center;
   float: left;
   width: 33.333333%;
+}
+.item a{
   color: #bf955a;
 }
 .recommend{
@@ -57,4 +59,7 @@ a{
   line-height: 50px;
   background-color: #bf955a;
   color: #fff;
+}
+.active{
+  color: red;
 }

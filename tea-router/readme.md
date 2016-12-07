@@ -194,3 +194,25 @@ import Home from './components/home.jsx'
 </Router>
 ```
 注意 IndexRoute是没有路径path参数，因为IndexRoute变成了this.props.children，当没有子类匹配到父类时它就变成了父类节点this.props.children<br/>
+我们想实现当点击导航标题标题可以高亮的效果。首先我们要用IndexLink替换Link
+```Javascript
+<li className='item' >
+  <IndexLink to='/' activeClassName='active' onlyActiveOnIndex={true}>首页</IndexLink>
+</li>
+```
+Router组件里的history属性是用来监听浏览器地址变化，并将URL解析成一个地址对象给React Router匹配<br/>
+history的属性有三种分别是: browserHistory, hashHistory, createMemoryHistory.<br/>
+如果设置成hashHistory，路由讲通过URL的哈希部分(#)切换例如 localhost:8080/#/college<br>
+如果设置成browserHistory，浏览器就显示征程路径localhost:8080/college<br>
+如果设置成createMemoryHistory，则主要用于服务器渲染，不与URL互动。<br/>
+我们项目中的url被建立成一种哈希，如果我们使用browserHistory设置。首先打开index.jsx文件，使用browerHistory代替hashHistory。
+```javascript
+import {Router, Route,IndexRoute, browerHistory} from 'react-router'
+<Router routes={routes} history={browerHistory}>
+  <IndexRoute component={Home}/>
+</Router>
+```
+刷新浏览器看一下，好像无法访问了，我们需要配置一下我们的服务，编辑package.json
+```javascript
+"start": "webpack-dev-server --inline --content-base . --history-api-fallback"
+```

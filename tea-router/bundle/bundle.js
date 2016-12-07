@@ -86,7 +86,7 @@
 
 	(0, _reactDom.render)(_react2.default.createElement(
 	  _reactRouter.Router,
-	  { routes: routes, history: _reactRouter.hashHistory },
+	  { routes: routes, history: _reactRouter.browserHistory },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _home2.default })
 	), document.getElementById('app'));
 
@@ -26622,19 +26622,6 @@
 	  _createClass(Header, [{
 	    key: 'render',
 	    value: function render() {
-	      var Host = 'http://localhost:8080/#/';
-	      var headerLists = [{ href: '', nav: '首页' }, { href: 'college', nav: '咖学院' }, { href: 'circle', nav: '咖圈子' }];
-	      var HeaderItem = headerLists.map(function (number, index) {
-	        return _react2.default.createElement(
-	          'li',
-	          { className: 'item', key: index },
-	          _react2.default.createElement(
-	            'a',
-	            { href: Host + number.href },
-	            number.nav
-	          )
-	        );
-	      });
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -26644,7 +26631,33 @@
 	          _react2.default.createElement(
 	            'ul',
 	            null,
-	            HeaderItem
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'item' },
+	              _react2.default.createElement(
+	                _reactRouter.IndexLink,
+	                { to: '/', activeClassName: 'active', onlyActiveOnIndex: true },
+	                '首页'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'item' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/college', activeClassName: 'active', onlyActiveOnIndex: true },
+	                '咖学院'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'item' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/circle', activeClassName: 'active', onlyActiveOnIndex: true },
+	                '咖圈子'
+	              )
+	            )
 	          )
 	        ),
 	        this.props.children || _react2.default.createElement(_home2.default, null)
