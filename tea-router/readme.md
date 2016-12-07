@@ -193,3 +193,4 @@ import Home from './components/home.jsx'
   <IndexRoute component={Home}/>
 </Router>
 ```
+注意 IndexRoute是没有路径path参数，因为IndexRoute变成了this.props.children，当没有子类匹配到父类时它就变成了父类节点this.props.children<br/>
