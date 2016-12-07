@@ -9,5 +9,6 @@
 [React条件渲染 Conditional Rendering](https://github.com/lucianLY/React/tree/master/lesson7)<br/>
 [React列表渲染](https://github.com/lucianLY/React/tree/master/lesson8)<br/>
 ##2) 进阶
+[React中的 ES6 和 JSX](https://github.com/lucianLY/React/tree/master/es6-jsx)
 [单页面应用 React.js环境下使用Npm, Babel和Webpack](https://github.com/lucianLY/React/tree/master/tea)<br/>
 [React-router介绍](https://github.com/lucianLY/React/tree/master/tea-router)

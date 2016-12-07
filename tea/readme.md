@@ -1,5 +1,5 @@
 #React 项目实战
-##案例一  单页面应用 React.js环境下使用Npm, Babel和Webpack
+##单页面应用 React.js环境下使用Npm, Babel和Webpack
 首先我们开启这个demo。首先新建项目文件夹tea，并在其中安装react和react-dom。
 ```javascript
   mkdir tea
