@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router'
+import Home from './home.jsx'
 
 class Header extends React.Component {
   render () {
@@ -15,7 +16,7 @@ class Header extends React.Component {
         <div className='header'>
           <ul>{HeaderItem}</ul>
         </div>
-        {this.props.children}
+        { this.props.children || <Home /> }
       </div>
     )
   }

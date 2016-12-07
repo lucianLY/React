@@ -58,17 +58,21 @@
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _coffeeCollege = __webpack_require__(236);
+	var _coffeeCollege = __webpack_require__(237);
 
 	var _coffeeCollege2 = _interopRequireDefault(_coffeeCollege);
 
-	var _coffeeCircle = __webpack_require__(237);
+	var _coffeeCircle = __webpack_require__(238);
 
 	var _coffeeCircle2 = _interopRequireDefault(_coffeeCircle);
 
-	var _article = __webpack_require__(238);
+	var _article = __webpack_require__(239);
 
 	var _article2 = _interopRequireDefault(_article);
+
+	var _home = __webpack_require__(236);
+
+	var _home2 = _interopRequireDefault(_home);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -80,7 +84,11 @@
 	  _react2.default.createElement(_reactRouter.Route, { path: '/circle', component: _coffeeCircle2.default })
 	);
 
-	(0, _reactDom.render)(_react2.default.createElement(_reactRouter.Router, { routes: routes, history: _reactRouter.hashHistory }), document.getElementById('app'));
+	(0, _reactDom.render)(_react2.default.createElement(
+	  _reactRouter.Router,
+	  { routes: routes, history: _reactRouter.hashHistory },
+	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _home2.default })
+	), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -26590,6 +26598,10 @@
 
 	var _reactRouter = __webpack_require__(179);
 
+	var _home = __webpack_require__(236);
+
+	var _home2 = _interopRequireDefault(_home);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26635,7 +26647,7 @@
 	            HeaderItem
 	          )
 	        ),
-	        this.props.children
+	        this.props.children || _react2.default.createElement(_home2.default, null)
 	      );
 	    }
 	  }]);
@@ -26647,6 +26659,76 @@
 
 /***/ },
 /* 236 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Home = function (_React$Component) {
+	  _inherits(Home, _React$Component);
+
+	  function Home() {
+	    _classCallCheck(this, Home);
+
+	    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+	  }
+
+	  _createClass(Home, [{
+	    key: 'render',
+	    value: function render() {
+	      var recommends = [{
+	        id: 1,
+	        title: '咖啡豆种类',
+	        href: './knowledge/1',
+	        image: './images/coffee-bean.jpg'
+	      }];
+	      var Lists = recommends.map(function (number, index) {
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'recommend_bg', style: { backgroundImage: 'url(' + number.image + ')' }, key: index },
+	          _react2.default.createElement(
+	            'a',
+	            { href: './knowledge.html', className: 'title_recommend' },
+	            number.title
+	          )
+	        );
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'recommends' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'index_recommend' },
+	          Lists
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Home;
+	}(_react2.default.Component);
+
+	exports.default = Home;
+
+/***/ },
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26700,7 +26782,7 @@
 	exports.default = CoffeeCollege;
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26749,7 +26831,7 @@
 	exports.default = CoffeeCircle;
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

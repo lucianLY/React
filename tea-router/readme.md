@@ -135,4 +135,61 @@ class Article extends React.Component {
 }
 export default Article
 ```
-让我们测试一下吧~
+让我们测试一下吧~<br>
+完成上面的案例我们注意到，当我们访问项目中'/'路径是，不会指向任何组件也就是说这时候的{this.props.children}是undefined。我们希望他可以渲染Home组件里的内容。<br>
+首先我们先新建home.jsx组件在components文件夹下。
+```Javascript
+import React from 'react'
+class Home extends React.Component {
+  render () {
+    const recommends = [
+      {
+        id : 1,
+        title : '咖啡豆种类',
+        href : './knowledge/1',
+        image : './images/coffee-bean.jpg'
+      }
+    ]
+    let Lists = recommends.map((number, index) =>
+      <div className='recommend_bg' style={{backgroundImage: 'url(' + number.image + ')'}}  key={index} >
+        <a href='./knowledge.html' className='title_recommend'>{number.title}</a>
+      </div>
+    )
+    return (
+      <div className = 'recommends'>
+        <div className='index_recommend'>
+          {Lists}
+        </div>
+      </div>
+    )
+  }
+}
+export default Home
+```
+
+接下来在修改header.jsx如果有子类就进app没有就返回home页面。
+```Javascript
+import Home from './home.jsx'
+return (
+  <div>
+    <div className='header'>
+      <ul>{HeaderItem}</ul>
+    </div>
+    { this.props.children || <Home /> }
+  </div>
+)
+```
+这样做的原因是：<br/>
+1、有利于使用React Router提供的各种API<br>
+2、参与了onEnter钩子<br/>
+3、有利于代码分离<br/>
+注意：我们是构建小程序中的小程序而非大程序。<br/>
+然后修改index.jsx文件路由
+```Javascript
+import { Router, Route, hashHistory, IndexRoute } from 'react-router'
+import Home from './components/home.jsx'
+
+<Router routes={routes} history={hashHistory}>
+  <IndexRoute component={Home}/>
+</Router>
+```

@@ -1,10 +1,11 @@
 import React from 'react'
 import {render} from 'react-dom'
-import {Router, Route, hashHistory} from 'react-router'
+import {Router, Route,IndexRoute, hashHistory} from 'react-router'
 import Header from './components/header.jsx'
 import College from './components/coffee-college.jsx'
 import Circle from './components/coffee-circle.jsx'
 import Article from './components/article.jsx'
+import Home from './components/home.jsx'
 
 let routes = <Router path='/' component={Header}>
   <Route path='/college' component={College} />
@@ -14,6 +15,7 @@ let routes = <Router path='/' component={Header}>
 
 render((
   <Router routes={routes} history={hashHistory}>
+    <IndexRoute component={Home}/>
   </Router>
   ), document.getElementById('app')
 )
