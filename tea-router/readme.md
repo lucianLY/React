@@ -90,3 +90,49 @@ return (
   </div>
 )
 ```
+看一下比较熟悉的URL形式
+```Javascript
+/college/tea/kinds
+/college/coffee/history
+```
+这种路由形式其实看起来更像是
+```javascript
+/college/:plate/:article
+```
+按照这一的形式，我们开始修改路由规则
+```Javascript
+import Article from './components/article.jsx'
+
+let routes = <Router path='/' component={Header}>
+  <Route path='/college' component={College} />
+  <Route path='/college/:Article' component={Article} />
+  <Route path='/circle' component={Circle} />
+</Router>
+```
+coffee-college文件也调整一下。
+```javascript
+render () {
+  const Host = 'http://localhost:8080/#/'
+  return (
+    <div>
+      <a href={Host + 'college/The history of coffee'}>咖啡的历史</a>
+    </div>
+  )
+}
+```
+新建一个子页面，点击文章链接，可以跳转显示 article.jsx
+```javascript
+import React from 'react'
+
+class Article extends React.Component {
+  render () {
+    return (
+      <div>
+        <span >{this.props.params.Article}</span>
+      </div>
+    )
+  }
+}
+export default Article
+```
+让我们测试一下吧~
