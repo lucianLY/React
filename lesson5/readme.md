@@ -16,12 +16,12 @@ function tick () {
 
 setInterval(tick, 1000)
 ```
-在这一节中，我们将制作一个可复用、封装的组件。首先我们需要将之前的函数转换成类，该怎么改写呢？
-1、创建一个ES6的类并继承React.Comment
-2、添加一个空的单一方法命名叫render()
-3、移除原来的render()方法
-4、使用this.props替换props
-5、删除掉剩余的方法
+在这一节中，我们将制作一个可复用、封装的组件。首先我们需要将之前的函数转换成类，该怎么改写呢？<br>
+1、创建一个ES6的类并继承React.Comment<br>
+2、添加一个空的单一方法命名叫render()<br>
+3、移除原来的render()方法<br>
+4、使用this.props替换props<br>
+5、删除掉剩余的方法<br>
 ```Javascript
 function Clock (props) {
   return (
@@ -43,10 +43,10 @@ class Clock extends React.Component {
   }
 }
 ```
-接下来分三步提出data从原有的代码中
-1、使用this.state.date代替this.props.date
-2、添加一个类的构造方法constructor 初始化 this.state的值为当前时间
-3、移除<Clock />里的变量
+接下来分三步提出data从原有的代码中<br>
+1、使用this.state.date代替this.props.date<br>
+2、添加一个类的构造方法constructor 初始化 this.state的值为当前时间<br>
+3、移除<Clock />里的变量<br>
 ```Javascript
 class Clock extends React.Component {
   constructor (props) {
@@ -72,7 +72,8 @@ function tick () {
 }
 setInterval(tick,1000)
 ```
-OK，我们的任务完成了，但是发现时间是静止的。这个如何解决呢？这时候我们需要添加一个生命周期的方法来解决了。对于包含大量组件的应用，组件销毁时清理相应的资源是非常重要的步骤。。我们准备给Clock做一个定时器当首次渲染DOM的时候，这个过程在React称之为【mounting】。同时也需要一个方法当DOM被产生时我们将移除它。这个过程我们称之为卸载【unmounting】。这些方法被称作生命周期钩子 【lifecycle hooks】
+OK，我们的任务完成了，但是发现时间是静止的。这个如何解决呢？这时候我们需要添加一个生命周期的方法来解决了。对于包含大量组件的应用，组件销毁时清理相应的资源是非常重要的步骤。<br>
+我们准备给Clock做一个定时器当首次渲染DOM的时候，这个过程在React称之为(mounting)。同时也需要一个方法当DOM被产生时我们将移除它。这个过程我们称之为卸载(unmounting)。这些方法被称作生命周期钩子(lifecycle hooks)
 ```Javascript
 class Clock extends React.Component {
   constructor (props) {
@@ -156,13 +157,13 @@ ReactDOM.render (
   document.getElementById('app')
 )
 ```
-回顾一下刚刚的代码都做了那些事情。
-1、当执行在React。render()里的<Clock />时候，React首先调用Clock组件constructor，当需要显示当前时间时候，先初始化了this.state给予了一个包含当前世界的对象。
-2、接下来React调用render()方法，这个方法将直接显示在页面上并将稍后更新状态。
-3、当Clock输出到DOM时，React调用了componentDidMount()生命周期钩子，在Clock组件里会每秒询问浏览器回调tick方法。
-4、每次浏览器去回调tick方法时Clock组件都会去执行setState更新当前时间对象。React发现状态改变了，会再一次调用render方法。这时候,在render()里的this.date.date是不一样的，React渲染输出更新时间。
-5、如果CLock组件移除了DOM，React将回调componentWillUnmount()生命周期钩子，这个时间则停止。
-组件的声明周期分成三个状态：
+回顾一下刚刚的代码都做了那些事情。<br>
+1、当执行在React。render()里的<Clock />时候，React首先调用Clock组件constructor，当需要显示当前时间时候，先初始化了this.state给予了一个包含当前世界的对象。<br>
+2、接下来React调用render()方法，这个方法将直接显示在页面上并将稍后更新状态。<br>
+3、当Clock输出到DOM时，React调用了componentDidMount()生命周期钩子，在Clock组件里会每秒询问浏览器回调tick方法。<br>
+4、每次浏览器去回调tick方法时Clock组件都会去执行setState更新当前时间对象。React发现状态改变了，会再一次调用render方法。这时候,在render()里的this.date.date是不一样的，React渲染输出更新时间。<br>
+5、如果CLock组件移除了DOM，React将回调componentWillUnmount()生命周期钩子，这个时间则停止。<br>
+组件的声明周期分成三个状态：<br>
 ```Javascript
   Mounting : 已插入DOM
   Updating : 正在被渲染

@@ -6,7 +6,7 @@ function Welcome (props) {
   return <h1>Hello, {props.name} </h1>
 }
 ```
-这个函数是有效的React组件，因为他接受了一个props对象作为参数，并且返回了一个React元素，我们称像这样的组件为“功能”，因为他们更像是Javascript的函数。同样我们也可以按照ES6类来定义组件
+这个函数是有效的React组件，因为他接受了一个props对象作为参数，并且返回了一个React元素，我们称像这样的组件称之为“功能”，因为他们更像是Javascript的函数。同样我们也可以按照ES6类来定义组件
 ```Javascript
 class Welcome extend React.Component {
   render () {
@@ -14,25 +14,24 @@ class Welcome extend React.Component {
   }
 }
 ```
-以上两种写法在React中都是等价的。类中附加功能我们讲在后边继续讲。
+以上两种写法在React中都是等价的。类中附加功能我们讲在后边继续讲。<br>
 之前，我们只遇到了React代表DOM标签，现在元素也可以代表自定义组件。当React发现元素代表了一个自定义标签时，它将通过JSX的属性传递给组件一个对象，我们称这样的对象是”道具”。例如
 ```Javascript
 function Welcome (props) {
   return <h1>Hello, {props.name} </h1>
 }
-let element = <Welcome name='Ben' />
+let Element = <Welcome name='Ben' />
 ReactDOM.render(
-  element,
+  Element,
   document.getElementById('app')
 )
 ```
-好了，让我们看看这个过程都发生了什么？
-首先我们调用ReactDOM.render()通过<Welcome name='Ben' />元素。当React发现Welcome是组件时变讲{name:'Ben'}对象看做道具，Welcome的组件同时返回了一个
+好了，让我们看看这个过程都发生了什么？<br>
+首先我们调用ReactDOM.render()通过<Welcome name='Ben' />元素。当React发现Welcome是组件时变讲{name:'Ben'}对象看做道具，Welcome的组件同时返回了一个新的元素结果，React DOM更新了页面。<br>
 ```html
 <h1>Hello, Ben</h1>
 ```
-的元素结果，React DOM更新了页面。
-需要注意的是，自定义组件使用了首字母大写方式，而小写的则代表了DOM。
+需要注意的是，自定义组件使用了首字母大写方式，而小写的则代表了DOM。<br>
 看这段代码~
 ```Javascript
 function Comment(props) {

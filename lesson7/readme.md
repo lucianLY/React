@@ -1,5 +1,5 @@
 ##条件渲染 Conditional Rendering
-React中可以使用不同的组件，提供了条件渲染的行为，可以使用javascript中的if来完成。
+React中可以使用不同的组件，提供了条件渲染的行为，可以使用javascript中的if来完成。<br>
 改造一下上节课的代码。
 ```javascript
 class Login extends React.Component {

@@ -61,9 +61,9 @@ var config = {
   }
 }
 ```
-具体代码参见tea 文件夹下的内容。
-附件：
-接下来我们探探刚刚做了哪些
+具体代码参见tea 文件夹下的内容。<br>
+附件：<br>
+接下来我们看看刚刚做了哪些<br>
 .babelrc是Babel的配置文件，存放在项目根目录下。使用Babel的第一步就是配置这个文件，该文件是用来设置转码规则和插件。
 ```Javascript
 {
@@ -71,12 +71,12 @@ var config = {
   "plugins" : []
 }
 ```
-babel-loader的作用: 可以把ES6的代码编译成ES5代码来使用
-babel-preset-es2015的作用: 字段转换的规则
-babel-preset-react的作用: 解析转换reactjs语法
-关于命令的简写
-介绍三个非常有用的-global,-save, -save-dev【注意区分大小写】
--global简写-g
--save简写-S
--save-dev简写-D
-npm init自动化生成创建package.json文件。
+babel-loader的作用: 可以把ES6的代码编译成ES5代码来使用<br>
+babel-preset-es2015的作用: 字段转换的规则<br>
+babel-preset-react的作用: 解析转换reactjs语法<br>
+关于命令的简写<br>
+介绍三个非常有用的-global,-save, -save-dev(注意区分大小写)<br>
+-global简写-g<br>
+-save简写-S<br>
+-save-dev简写-D<br>
+npm init自动化生成创建package.json文件。<br>

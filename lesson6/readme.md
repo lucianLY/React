@@ -1,7 +1,7 @@
 ##React的事件 Handling Events
-React事件和DOM事件一样，只是有一些语法不同而已。
-  React事件命名使用驼峰式而不是小写。
-  通过JSX传递事件方法而不是字符串
+React事件和DOM事件一样，只是有一些语法不同而已。<br>
+  React事件命名使用驼峰式而不是小写。<br>
+  通过JSX传递事件方法而不是字符串<br>
 例如：
 ```html
 <button onclick='activateLasers()'></button>
@@ -38,7 +38,7 @@ ReactDOM.render(
   document.getElementById('app')
 )
 ```
-上面代码中，我们使用了this。在Javascript里，类方法默认是不被绑定的。如果你忘记绑定this.handleClick那么在调用函数时将会出现undefined。
+上面代码中，我们使用了this。在Javascript里，类方法默认是不被绑定的。如果你忘记绑定this.handleClick那么在调用函数时将会出现undefined。<br>
 如果将我们的代码优化一起其实可以这样~~
 ```Javascript
 class Toggle extends React.Component {
@@ -65,4 +65,3 @@ ReactDOM.render(
   document.getElementById('app')
 )
 ```
-代码参见 lesson 6
