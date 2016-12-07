@@ -33,3 +33,60 @@ render((
 ```
 好的，我们打开浏览器看一下。ok，现在页面上呈现出导航条。但是现在它们都是静态无连接，我想现在我们可以给它添加上连接了。<br>
 我们先在components文件夹下复制进来header.jsx文件，同时新建coffee-college.jsx和coffee-circle.jsx两个文件。我们希望当点击咖学院的时候可以展示coffee-college里文件的内容，点击咖圈子的时候展示coffee-circle的内容。
+```Javascript
+/*coffee-circle.jsx*/
+import React from 'react'
+
+class CoffeeCircle extends React.Component {
+  render () {
+    return (<h1>咖圈子</h1>)
+  }
+}
+
+export default CoffeeCircle
+/*coffee-college.jsx*/
+import React from 'react'
+
+class CoffeeCollege extends React.Component {
+  render () {
+    return (<h1>咖学院的内容</h1>)
+  }
+}
+export default CoffeeCollege
+```
+我们还需要修改一下index.jsx里的Route部分。
+```Javascript
+render((
+  <Router history={hashHistory}>
+    <Route path='/' component={Home} />
+    <Route path='/college' component={College} />
+    <Route path='/circle' component={Circle} />
+  </Router>
+  ), document.getElementById('app')
+)
+```
+这样当我们访问[http://localhost:8080/#/college](http://localhost:8080/#/college)和[http://localhost:8080/#/circle](http://localhost:8080/#/circle)会可以看到相应的提示内容了。<br/>
+这时我们发现顶部的导航不在每个分页之中，把导航嵌入在组件里需要两步首先使组块成为子类，然后并在父类中引用。修改我们的index.jsx文件
+```Javascript
+let routes = <Router path='/' component={Header}>
+  <Route path='/college' component={College} />
+  <Route path='/circle' component={Circle} />
+</Router>
+
+render((
+  <Router routes={routes} history={hashHistory}>
+  </Router>
+  ), document.getElementById('app')
+)
+```
+修改header.jsx文件
+```Javascript
+return (
+  <div>
+    <div className='header'>
+      <ul>{HeaderItem}</ul>
+    </div>
+    {this.props.children}
+  </div>
+)
+```

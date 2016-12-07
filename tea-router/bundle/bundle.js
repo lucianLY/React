@@ -26605,28 +26605,32 @@
 	  _createClass(Header, [{
 	    key: 'render',
 	    value: function render() {
+	      var Host = 'http://localhost:8080/#/';
 	      var headerLists = [{ href: '', nav: '首页' }, { href: 'college', nav: '咖学院' }, { href: 'circle', nav: '咖圈子' }];
 	      var HeaderItem = headerLists.map(function (number, index) {
 	        return _react2.default.createElement(
 	          'li',
 	          { className: 'item', key: index },
 	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { to: '/{{number.href}}' },
-	            number.href,
-	            '--',
+	            'a',
+	            { href: Host + number.href },
 	            number.nav
 	          )
 	        );
 	      });
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'header' },
+	        null,
 	        _react2.default.createElement(
-	          'ul',
-	          null,
-	          HeaderItem
-	        )
+	          'div',
+	          { className: 'header' },
+	          _react2.default.createElement(
+	            'ul',
+	            null,
+	            HeaderItem
+	          )
+	        ),
+	        this.props.children
 	      );
 	    }
 	  }]);
