@@ -1,5 +1,5 @@
 ##Reat的状态和声明周期 State and LifeCyle
-让我们继续回到第四节中的例子，看一下这段代码。目前我们只知道用这种方式来渲染UI，我们调用ReactDOM.render()来渲染输出。
+让我们继续回到第四节中的例子，看一下这段代码。目前我们只知道用这种方式来渲染 UI，我们调用 `ReactDOM.render()` 来渲染输出。
 ```Javascript
 function tick () {
   let element = (
@@ -17,10 +17,10 @@ function tick () {
 setInterval(tick, 1000)
 ```
 在这一节中，我们将制作一个可复用、封装的组件。首先我们需要将之前的函数转换成类，该怎么改写呢？<br>
-1、创建一个ES6的类并继承React.Comment<br>
-2、添加一个空的单一方法命名叫render()<br>
-3、移除原来的render()方法<br>
-4、使用this.props替换props<br>
+1、创建一个ES6的类并继承 React.Comment<br>
+2、添加一个空的单一方法命名叫 render()<br>
+3、移除原来的 render() 方法<br>
+4、使用 this.props 替换props<br>
 5、删除掉剩余的方法<br>
 ```Javascript
 function Clock (props) {
@@ -158,11 +158,11 @@ ReactDOM.render (
 )
 ```
 回顾一下刚刚的代码都做了那些事情。<br>
-1、当执行在React。render()里的<Clock />时候，React首先调用Clock组件constructor，当需要显示当前时间时候，先初始化了this.state给予了一个包含当前世界的对象。<br>
-2、接下来React调用render()方法，这个方法将直接显示在页面上并将稍后更新状态。<br>
-3、当Clock输出到DOM时，React调用了componentDidMount()生命周期钩子，在Clock组件里会每秒询问浏览器回调tick方法。<br>
-4、每次浏览器去回调tick方法时Clock组件都会去执行setState更新当前时间对象。React发现状态改变了，会再一次调用render方法。这时候,在render()里的this.date.date是不一样的，React渲染输出更新时间。<br>
-5、如果CLock组件移除了DOM，React将回调componentWillUnmount()生命周期钩子，这个时间则停止。<br>
+1、当执行在 React。render() 里的 <Clock /> 时候，React 首先调用 Clock 组件 constructor，当需要显示当前时间时候，先初始化了this.state给予了一个包含当前世界的对象。<br>
+2、接下来 React 调用 render() 方法，这个方法将直接显示在页面上并将稍后更新状态。<br>
+3、当 Clock 输出到 DOM 时，React 调用了 componentDidMount() 生命周期钩子，在Clock组件里会每秒询问浏览器回调tick方法。<br>
+4、每次浏览器去回调 tick 方法时 Clock 组件都会去执行setState更新当前时间对象。React发现状态改变了，会再一次调用 render 方法。这时候,在 render() 里的 this.date.date 是不一样的，React 渲染输出更新时间。<br>
+5、如果 Clock 组件移除了 DOM，React 将回调 componentWillUnmount() 生命周期钩子，这个时间则停止。<br>
 组件的声明周期分成三个状态：<br>
 ```Javascript
   Mounting : 已插入DOM

@@ -1,5 +1,5 @@
-##组件
-React 中所有的一切都是组件，然后会生成一个 React DOM 元素。
+##JSX介绍
+回顾一下之前写好的代码
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
