@@ -50,4 +50,5 @@ class Layout extends React.Component {
 ····
 ```
 export default 命令<br>
-从前面的例子可以看出，使用 `import` 命令的时候，用户需要知道所加载的变量名或者函数名，否则无法加载。为了用户可以直接加载到模块就需要 `export default` 命令了。 `export default` 也可以直接用在匿名函数前面。
+从前面的例子可以看出，使用 `import` 命令的时候，用户需要知道所加载的变量名或者函数名，否则无法加载。为了用户可以直接加载到模块就需要 `export default` 命令了。 `export default` 也可以直接用在匿名函数前面。<br>
+当然为了项目更加整洁点，我们也可以拆分出去 `Layout` 类。新建 `layout.jsx` 文件在 component 文件夹下。
