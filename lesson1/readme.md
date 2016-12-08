@@ -1,5 +1,5 @@
 ##React安装
-我们推荐使用 npm 进行安装操作。<br>
+我们推荐使用 `npm` 进行安装操作。<br>
 先来安装react 和 react-dom
 ```Javascript
 npm install react react-dom -S
@@ -45,7 +45,7 @@ module.exports = {
 }
 ```
 完成这些安装之后，我们先检查一下我们刚刚所配置的是否正确。在lesson1里新建一个`index.jsx`文件。并在里边写一行代码 `console.log('Hello React')`。然后我们在命令行里执行一下 `webpack` 。所生成的文件会在 `bundle` 文件夹里。<br>
-同时，我们在根目录下新建 `index.html` 文件。引入我们bundle里的js文件。
+同时，我们在根目录下新建 `index.html` 文件。引入我们 bundle 里的 js 文件。
 ```html
 <!DOCTYPE html>
 <html>
