@@ -1,11 +1,64 @@
-##初始React
-我们推荐使用 Npm 来进行管理前端依赖库
+##React安装
+我们推荐使用 npm 进行安装操作。<br>
+先来安装react 和 react-dom
 ```Javascript
-npm install --save react react-dom -S
+npm install react react-dom -S
 ```
-启用ES6和JSX
-推荐使用React的Babel可以在代码中使用ES6和JSX。<br>
-ES6是一套现代的Javascript风格，而JSX是Javascript的一个扩展让React变得更加灵活自如。
+注意：我们推荐在 React 里使用 ES6 和 JSX 的代码。是因为ES6是一套现代的Javascript风格，而JSX是Javascript的一个扩展让React变得更加灵活自如。我们可以通过在项目中配置 Babel 来转义 ES6 和 JSX。所以我们需要在项目中安装 `babel-preset-es2015` 和 `babel-preset-reset` 。
+```Javascript
+npm install babel-preset-es2015 babel-preset-reset -S
+```
+同时配置一下.babelrc文件(Babel的配置文件是.babelrc，存放在项目根目录下).
+```Javascript
+{
+  "presets" : ["es2015", "react"]
+}
+```
+webpack 是React的一个好帮手，我们可以用它来构建我们需要改的文件。
+```Javascript
+npm i webpack -S
+```
+好了，基本的安装都完成了。<br>
+接下来需要编辑一下webpack.config.js文件。
+```Javascript
+var webpack = require('webpack')
+var path = require('path')
+module.exports = {
+  entry : './lesson1/index.jsx',
+  output : {
+    path : 'bundle',
+    filename : 'bundle.js'
+  },
+  module : {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-0'],
+          plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
+        }
+      }
+    ]
+  }
+}
+```
+完成这些安装之后，我们先检查一下我们刚刚所配置的是否正确。在lesson1里新建一个`index.jsx`文件。并在里边写一行代码 `console.log('Hello React')`。然后我们在命令行里执行一下 `webpack` 。所生成的文件会在 `bundle` 文件夹里。<br>
+同时，我们在根目录下新建 `index.html` 文件。引入我们bundle里的js文件。
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Coffee</title>
+  </head>
+  <body>
+    <script src='./bundle/bundle.js'></script>
+  </body>
+</html>
+```
+ok,浏览器打开文件可以在控制台输出我们缩写的。这样，基本的React安装就完成了。那么 React 构建一个单页面项目呢？我们需要继续更新一下我们的代码。编辑 `lesson1/index.jsx` 文件。
 ```Javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -17,24 +70,11 @@ ReactDOM.render(
   document.getElementById('app')
 )
 ```
-或者使用CDN(我们不是特别推荐)
+以及在根目录的 `index.html` 文件。
 ```html
-<script src="https://unpkg.com/react@15/dist/react.js"></script>
-<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+<body>
+  <div id="app"></div>
+  <script src='./bundle/bundle.js'></script>
+</body>
 ```
-React是一个Javascript库，如果你了解基本的Javascript语法，但是并不是很理解，我建议可以先看一下Javascript的知识再继续学习React。学习React时也需要用到一些ES6的语法知识。<br>
-Ok，我们从一个最简单的例子开始学习，React。首先我们需要引用react.js、react-dom.js和babel.js三个js文件。<br>
-react.js是React核心库<br>
-react-dom.js提供了与DOM有关的功能<br>
-baber.js作用是讲JSX转化成javascript的语法<br>
-注意：凡是使用JSX的语法都需要添加script type="text/jsx"，因为React独有的JSX语法跟javascript不兼容。
-```html
-<div id="app"></div>
-<script type="text/jsx">
-ReactDOM.render(
-  <h1>Hello React</h1>,
-  document.getElementById('app')
-)
-</script>
-```
-刷新我们的页面，这样我们在页面上渲染出了‘Hello React’。 (代码部分lesson1)<br>
+再次执行 `webpack` 命令，我们的代码出现了。
