@@ -2,11 +2,11 @@
 我们推荐使用 `npm` 进行安装操作。<br>
 先来安装react 和 react-dom
 ```Javascript
-npm install react react-dom -S
+npm i react react-dom -S
 ```
 注意：我们推荐在 React 里使用 ES6 和 JSX 的代码。是因为ES6是一套现代的Javascript风格，而JSX是Javascript的一个扩展让React变得更加灵活自如。我们可以通过在项目中配置 Babel 来转义 ES6 和 JSX。所以我们需要在项目中安装 `babel-preset-es2015` 和 `babel-preset-reset` 。
 ```Javascript
-npm install babel-preset-es2015 babel-preset-reset -S
+npm i babel-preset-es2015 babel-preset-reset -S
 ```
 同时配置一下.babelrc文件(Babel的配置文件是.babelrc，存放在项目根目录下).
 ```Javascript
@@ -77,4 +77,16 @@ ReactDOM.render(
   <script src='./bundle/bundle.js'></script>
 </body>
 ```
-再次执行 `webpack` 命令，我们的代码出现了。
+再次执行 `webpack` 命令，我们的 `Hello React` 出现了。<br>
+能不能有一个办法，不使用直接运行文件的方法运行我们的 `index.html` 文件呢？当然可以，我们需要安装 `webpack-dev-server` 的服务来帮助我们。在命令行里执行
+```Javascript
+npm i webpack-dev-server -S
+```
+同事修改一下 `package.json` 文件
+```Javascript
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "dev": "webpack-dev-server --content-base src --inline --hot",
+}
+```
+在命令行里输入 `webpack-dev-server` 同时使用 [http://localhost:8080/](http://localhost:8080/) 访问项目

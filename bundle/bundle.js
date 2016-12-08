@@ -56,12 +56,22 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Html = _react2.default.createElement(
+	function formatName(user) {
+	  return user.fristName + ' ' + user.lastName;
+	}
+	var user = {
+	  fristName: 'Lucian',
+	  lastName: 'Yang'
+	};
+	//使用圆括号是增强了JSX的可读性当然这不是强制性
+	var element = _react2.default.createElement(
 	  'h1',
 	  null,
-	  'Hello React'
+	  'Hello ',
+	  formatName(user)
 	);
-	_reactDom2.default.render(Html, document.getElementById('app'));
+
+	_reactDom2.default.render(element, document.getElementById('app'));
 
 /***/ },
 /* 1 */

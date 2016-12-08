@@ -1,10 +1,22 @@
-##介绍JSX
-这段代码语法既不是字符串也不是html
-```Javascript
-var element = <h1>Hello React</h1>
+##组件
+React 中所有的一切都是组件，然后会生成一个 React DOM 元素。
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom'
+let Html = (
+  <h1>Hello React</h1>
+)
+ReactDOM.render(
+  Html,
+  document.getElementById('app')
+)
 ```
-这被称之为JSX，JSX是Javascript的语法扩展，我们推荐使用它来描述React里的UI结构。这里提示一下JSX是模板语言，同时也具备javascript的全部功能。<br>
-我们可以将Javascript表达式嵌入在JSX里通过大括号的形式书写。<br>
+其中这段代码语法既不是字符串也不是html
+```Javascript
+var Html = <h1>Hello React</h1>
+```
+这被称之为 JSX，JSX 是 Javascript 的语法扩展，我们推荐使用它来描述 React 里的 UI 结构。这里提示一下 JSX 是模板语言，同时也具备 Javascript 的全部功能。<br>
+我们可以将 Javascript 表达式嵌入在 JSX 里通过大括号的形式书写。<br>
 基本语法规则：遇到(<)开头就使用html规则解释；遇到({)卡特就用javascript规则解释。
 ```Javascript
 function formatName (user) {
@@ -42,4 +54,3 @@ let element = <div tabIndex = '1' ></div>
 ```Javascript
 let element = <img src={user.avatarUrl} />
 ```
-代码部分 lesson2
