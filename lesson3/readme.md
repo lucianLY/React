@@ -1,30 +1,53 @@
-##呈现元素
-元素是 React 里最小的单元，元素描述的内容将会呈现在页面上。它不像是 HTML 的 DOM 元素，React 元素是普通对象而且很容易创造。
-回顾第一节中我们设置的 `index.html` 的一段代码。
-```html
-<div id='app'></div>
-```
-我们把 i d为 app 的 div 称之为根节点，所有的 React DOM 都将在这里呈现。React 元素的渲染需要使用 ReactDOM.render() 方法
+##React 嵌套组件
+之前的代码里 `Layout` 这个类构件了一个一行代码，如果我们按照页面布局的形式来划分应该在其上部有一个 `<header>` 在下部有一个 `<footer>` 标签。然后统一加载到页面上。<br>
+首先让我们新建一个 `components` 文件夹，里边放进去 `header.jsx` 和 `footer.jsx` 两个文件，<br>
+`header.jsx` 的内容
 ```Javascript
-ReactDOM.render(
-  <h1>Hello React</h1>,
-  document.getElementById('app')
-)
-```
-React 是不可变的，我们只能创建一次，我们不能改变其中的子类和属性，每一个元素都像电影里的一帧。唯一的办法就是更新元素。
-```Javascript
-function tick () {
-  let element = (
-    <div>
-      <h1>Local Time</h1>
-      <h2>{new Date().toLocaleTimeString()}</h2>
-    </div>
-  )
-  ReactDOM.render(
-    element,
-    document.getElementById('app')
-  )
+import React from 'react'
+
+export default class Header extends React.Component {
+  render () {
+    return (
+      <h1> Welcome ! </h1>
+    )
+  }
 }
 
-setInterval(tick, 1000)
 ```
+`footer.jsx` 的内容
+```Javascript
+import React from 'react'
+
+export default class Footer extends React.Component {
+  render () {
+    return (
+      <h1> Fooer </h1>
+    )
+  }
+}
+```
+更新一下 `index.jsx` 文件
+```Javascript
+····
+import Header from './components/header.jsx'
+import Footer from './components/footer.jsx'
+
+class Layout extends React.Component {
+  constructor (name) {
+    super()
+    this.name = 'Lucian'
+  }
+  render () {
+    return (
+      <div>
+        <Header />
+        <h1>Hello {this.name} </h1>
+        <Footer />
+      </div>
+    )
+  }
+}
+····
+```
+export default 命令<br>
+从前面的例子可以看出，使用 `import` 命令的时候，用户需要知道所加载的变量名或者函数名，否则无法加载。为了用户可以直接加载到模块就需要 `export default` 命令了。 `export default` 也可以直接用在匿名函数前面。

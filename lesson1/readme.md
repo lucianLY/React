@@ -62,11 +62,15 @@ ok,浏览器打开文件可以在控制台输出我们缩写的。这样，基�
 ```Javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
-let Html = (
-  <h1>Hello React</h1>
-)
+class Layout extends React.Component {
+  render () {
+    return (
+      <h1>Hello React</h1>
+    )
+  }
+}
 ReactDOM.render(
-  Html,
+  <Layout />,
   document.getElementById('app')
 )
 ```
@@ -78,6 +82,18 @@ ReactDOM.render(
 </body>
 ```
 再次执行 `webpack` 命令，我们的 `Hello React` 出现了。<br>
+元素是 React 里最小的单元，元素描述的内容将会呈现在页面上。它不像是 HTML 的 DOM 元素，React 元素是普通对象而且很容易创造。
+在 `index.html` 文件里。
+```html
+<div id='app'></div>
+```
+我们把 id 为 app 的 div 称之为根节点，所有的 React DOM 都将在这里呈现。React 元素的渲染需要使用 `ReactDOM.render()` 方法
+```Javascript
+ReactDOM.render(
+  <h1>Hello React</h1>,
+  document.getElementById('app')
+)
+```
 能不能有一个办法，不使用直接运行文件的方法运行我们的 `index.html` 文件呢？当然可以，我们需要安装 `webpack-dev-server` 的服务来帮助我们。在命令行里执行
 ```Javascript
 npm i webpack-dev-server -S

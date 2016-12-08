@@ -7,9 +7,9 @@ React 学习是一个漫长的过程，你会发现它既不是一个库也不�
 ##React 简介：
 React 起源于 Facebook 的内部项目，由于 React 的性能出众、逻辑简单所以越来越多的人开始关注并使用。<br>
 ##1) 快速入门
-[React安装](https://github.com/lucianLY/React/tree/master/lesson1)<br/>
-[JSX介绍](https://github.com/lucianLY/React/tree/master/lesson2)<br/>
-[React渲染](https://github.com/lucianLY/React/tree/master/lesson3)<br/>
+[React 安装](https://github.com/lucianLY/React/tree/master/lesson1)<br/>
+[React 组件](https://github.com/lucianLY/React/tree/master/lesson2)<br/>
+[React 嵌套组件](https://github.com/lucianLY/React/tree/master/lesson3)<br/>
 [React组件和道具 Components and Props](https://github.com/lucianLY/React/tree/master/lesson4)<br/>
 [React的状态和生命周期 State and LifeCyle](https://github.com/lucianLY/React/tree/master/lesson5)<br/>
 [React的事件 Handling Events](https://github.com/lucianLY/React/tree/master/lesson6)<br/>

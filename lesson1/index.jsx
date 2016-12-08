@@ -1,9 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-let Html = (
-  <h1>Hello React</h1>
-)
+class Layout extends React.Component {
+  render () {
+    return (
+      <h1>Hello React</h1>
+    )
+  }
+}
 ReactDOM.render(
-  Html,
+  <Layout />,
   document.getElementById('app')
 )
