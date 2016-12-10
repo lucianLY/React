@@ -21510,17 +21510,38 @@
 
 	    var _this = _possibleConstructorReturn(this, (Layout.__proto__ || Object.getPrototypeOf(Layout)).call(this));
 
+	    _this.tick = function () {
+	      _this.setState({
+	        date: new Date()
+	      });
+	    };
+
 	    _this.name = 'Lucian';
+	    _this.state = { date: new Date() };
 	    return _this;
 	  }
 
 	  _createClass(Layout, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      setInterval(function () {
+	        return _this2.tick();
+	      }, 1000);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(_header2.default, null),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          this.state.date.toLocaleTimeString()
+	        ),
 	        _react2.default.createElement(
 	          'h1',
 	          null,

@@ -1,91 +1,64 @@
-##组件和道具 Components and Props
-React 里所有的一切都是组件。我们把组件拆分为独立的 UI，具有可重复性并且相互独立。从定义上来看，组件更像是 Javascript 的方法，他们接受任何的道具并且返回呈现在页面上的 React 元素。
-最简单的方法是定义一个Javascript函数
+##Reat的状态和声明周期 State and LifeCyle
+如果我们想在网页里添加一条本地时间应该怎么做呢？<br>
+首先打开 `layout.jsx` 文件，编辑一下我们的 render 部分
 ```Javascript
-function Welcome (props) {
-  return <h1>Hello, {props.name} </h1>
-}
-```
-这个函数是有效的 React 组件，因为他接受了一个 props 对象作为参数，并且返回了一个 React 元素，我们称像这样的组件称之为“功能”，因为他们更像是 Javascript 的函数。同样我们也可以按照 ES6 类来定义组件
-```Javascript
-class Welcome extend React.Component {
-  render () {
-    return <h1>Hello, {this.props.name}</h1>
-  }
-}
-```
-以上两种写法在 React 中都是等价的，在 React 中我们更倾向于使用 ES6 的写法。<br>
-之前，我们只遇到了 React 代表 DOM 标签，现在元素也可以代表自定义组件。当 React 发现元素代表了一个自定义标签时，它将通过 JSX 的属性传递给组件一个对象，我们称这样的对象是”道具”。例如
-```Javascript
-function Welcome (props) {
-  return <h1>Hello, {props.name} </h1>
-}
-let Element = <Welcome name='Ben' />
-ReactDOM.render(
-  Element,
-  document.getElementById('app')
+return (
+  <div>
+    <Header />
+    <div>
+      {new Date().toLocaleTimeString()}
+    </div>
+    <h1>Hello {this.name} </h1>
+    <Footer />
+  </div>
 )
 ```
-好了，让我们看看这个过程都发生了什么？<br>
-首先我们调用 `ReactDOM.render()` 通过 `<Welcome name='Ben' />` 元素。当 React 发现 Welcome 是组件时变化 `{name:'Ben'}` 对象看做道具，Welcome 的组件同时返回了一个新的元素结果，React DOM 更新了页面。<br>
-需要注意的是，自定义组件使用了首字母大写方式，而小写的则代表了 DOM。<br>
-看这段代码~
+ok，我们发现这个时间并非是实时更新，那如何才能做到这一点呢？<br>
+首先我们在构造函数 `constructor` 初始化 `time` 时间。
 ```Javascript
-function Comment(props) {
-  return (
-    <div className="UserInfo">
-      <img className="Avatar"
-        src={props.user.avatarUrl}
-        alt={props.user.name}
-      />
-    </div>
-  );
+constructor (name) {
+  super()
+  this.name = 'Lucian'
+  this.state = {date : new Date()}
 }
 ```
-上面代码中元素被嵌套了两层，我们想更好的拆分他们，使之变得更独立。
+我们准备给 `Clock` 做一个定时器当首次渲染 DOM 的时候，这个过程在 React 称之为 (mounting)。同时也需要一个方法当 DOM 被产生时我们将移除它。这个过程我们称之为卸载 (unmounting)。这些方法被称作生命周期钩子 (lifecycle hooks)
 ```Javascript
-function Comment(props) {
-  return (
-    <div className="UserInfo">
-      <Avatar user={props.author}/>
-    </div>
-  );
+constructor (name) {
+  super()
+  this.name = 'Lucian'
+  this.state = {date : new Date()}
 }
-function Avatar (props) {
-  retuen (
-    <img className="Avatar"
-      src={props.user.avatarUrl}
-      alt={props.user.name}
-    />
-  )
+componentDidMount () {
+
 }
 ```
-整理一下我们的代码。
+`componentDidMount` 组件加载完成之后执行<br>
+最后我们实现一个tick的方法,我们将使用this.setState()方法来更新时间
 ```Javascript
-function Comment(props) {
-  return (
-    <div className="UserInfo">
-      <Avatar user={props.author}/>
-    </div>
-  );
-}
-function Avatar (props) {
-  return (
-    <img className="Avatar"
-      src={props.user.avatarUrl}
-      alt={props.user.name}
-    />
+componentDidMount() {
+  setInterval(
+    () => this.tick(),
+    1000
   )
 }
-let comment = {
-  author: {
-    name: 'Hello Kitty',
-    avatarUrl: 'http://placekitten.com/g/64/64'
-  }
-};
-let element = <Comment author={comment.author}/>
-ReactDOM.render(
-  element,
-  document.getElementById('app')
-)
+tick = () => {
+  this.setState({
+    date: new Date()
+  });
+}
+```
+组件的声明周期分成三个状态：<br>
+```Javascript
+  Mounting : 已插入DOM
+  Updating : 正在被渲染
+  Unmounting : 已移除真是DOM
+```
+React为每个状态都提供两个处理函数 will 函数在进入状态之前调用，did 函数进入状态之后调用。
+```Javascript
+  componentWillMount()
+  componentDidMount()
+  conponentWillUpdate(object nextProps, object prevState)
+  conponentdidlUpdate(object nextProps, object prevState)
+  componentWillUnmount()
 ```
