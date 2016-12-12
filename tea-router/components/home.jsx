@@ -38,7 +38,6 @@ class Home extends React.Component {
             {Lists}
           </div>
         </div>
-        <Footer />
       </div>
     )
   }
