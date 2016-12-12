@@ -2,11 +2,19 @@ var webpack = require('webpack')
 var path = require('path')
 
 module.exports = {
-  entry : './tea-router/index.jsx',
+  entry : [
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    './tea-router/index.jsx'
+  ],
   output : {
-    path : 'bundle',
+    path : 'app/bundle',
     filename : 'bundle.js'
   },
+  plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin()
+  ],
   module : {
     loaders: [
       {
