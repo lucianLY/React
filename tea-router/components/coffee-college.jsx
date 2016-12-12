@@ -1,7 +1,7 @@
 import React from 'react'
 import Banner from './banner.jsx'
 import {Link} from 'react-router'
-
+import CoffeeJson from './json.jsx'
 
 class CoffeeCollege extends React.Component {
   render () {
