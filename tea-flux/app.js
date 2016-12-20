@@ -1,5 +1,6 @@
 import React from "react"
 import AppStore from './stores/AppStore.js'
+import * as AppAction from './actions/AppAction.js'
 
 export default class DemoApp extends React.Component {
   constructor () {
@@ -9,26 +10,37 @@ export default class DemoApp extends React.Component {
       todos : AppStore.getTodos()
     }
   }
+  componentWillMount () {
+    AppStore.on('change', () => {
+      this.setState({
+        todos: AppStore.getTodos()
+      })
+    })
+  }
 
   createTodo (event) {
     console.log(event.target.value)
   }
 
+  removeTodo (e) {
+    AppAction.RemoveTODO(e)
+  }
+
   handleChange (event) {
    this.setState({value: event.target.value})
- }
+  }
 
- handleSubmit (event) {
-   console.log(this.state.value)
-   AppStore.CreateTodo(this.state.value)
-   event.preventDefault()
- }
+   handleSubmit (event) {
+     event.preventDefault()
+     console.log(this.state.value)
+     AppAction.CreateTODO(this.state.value)
+   }
 
   render () {
     const {todos} = this.state
     let todoLists = todos.map((todo) =>
       <div key={todo.id} >
-        <span>{todo.text}</span> | <span>x</span>
+        <span>{todo.text}</span> | <span onClick={this.removeTodo.bind(null, todo.id)}>x</span>
       </div>
     )
 
