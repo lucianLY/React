@@ -1,0 +1,46 @@
+.c-sign{
+  width: 202px;
+  padding: 0 18px;
+  margin: 0 auto;
+  border:1px solid #ddd;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -101px;
+}
+.c-sign-title{
+  color: #6b2613;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+  font-size: 1.5em;
+}
+.c-sign-label{
+  text-align: center;
+  display: block;
+  width: 40px;
+  height: 36px;
+  line-height: 36px;
+  position: absolute;
+}
+.c-sign-input{
+  display: block;
+  float: left;
+  height: 30px;
+  padding: 0 30px 0 40px;
+}
+.c-sign-btn{
+  width: 100%;
+  height: 36px;
+  background-color: #6b2613;
+  border: 1px solid #6b2613;
+  color:#FFF;
+  font-size: 1.2em;
+}
+.c-sign-body-item{
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+}
