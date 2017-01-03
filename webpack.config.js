@@ -5,7 +5,7 @@ module.exports = {
   entry : [
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './redux/index.jsx'
+    './redux-lesson-1/index.jsx'
   ],
   output : {
     path : 'app/bundle',
