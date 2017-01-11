@@ -1,10 +1,10 @@
 import { createStore } from 'redux'
 
-const reducer = (initialState = 1, action) => {
+const reducer = (state = 1, action) => {
   if (action.type == 'INC') {
-    return initialState + action.count
+    return state + action.count
   }
-  return initialState
+  return state
 }
 
 const store = createStore (reducer, 1)
