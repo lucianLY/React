@@ -1,37 +1,25 @@
 import { applyMiddleware, createStore } from 'redux'
 
-const reducer = (initialState = 1, action) => {
+const reducer = (state = 0, action) => {
   if (action.type == 'INC') {
-    return initialState + 1
-  }else if (action.type == 'E'){
-    throw new Error('AAAAAAA')
+    return initialState + action.count
   }
   return initialState
 }
 
-const logger = (store) => (next) => (action) => {
-  console.log('action fired', action)
+const logger = (store) => (next) => (action) =>{
+  console.log('action fired ', action)
   next(action)
 }
 
-const error = (store) => (next) => (action) => {
-  try {
-    next(action)
-  }catch(e){
-    console.log('AHHHHH!')
-  }
-}
-
-const middleware = applyMiddleware(logger, error)
-
+const middleware = applyMiddleware(logger)
 const store = createStore (reducer, 1, middleware)
 
 store.subscribe(() => {
-  console.log('store changed ' + store.getState())
+  console.log('store change ',store.getState())
 })
 
-store.dispatch({type:"INC"})
-store.dispatch({type:"INC2"})
-store.dispatch({type:"INC3"})
-store.dispatch({type:"INC4"})
-store.dispatch({type:"E"})
+store.dispatch({type:"INC", count : 1})
+store.dispatch({type:"INC", count : 2})
+store.dispatch({type:"INC", count : 3})
+store.dispatch({type:"INC", count : 4})
