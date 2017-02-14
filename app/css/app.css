@@ -180,5 +180,10 @@ a{
 }
 .culture{
   display: block;
-  width: 100%;
+  width: 98%;
+  padding: 0 1% 0 1%;
+  margin-top: 10px;
+}
+.culture-title{
+  padding-left: 10px;
 }
